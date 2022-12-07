@@ -1,3 +1,9 @@
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
+
 /*!
    * Sizzle CSS Selector Engine v2.3.6
    * https://sizzlejs.com/
