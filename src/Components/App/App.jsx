@@ -19,7 +19,7 @@ import List from '../List/List'
 
 export default function App() {
 
-  let { userData, setUserData ,setUserProfile,userProfile} = useContext(AuthContext);
+  let { userData, setUserData } = useContext(AuthContext);
   function saveUserData() {
     let encodedToken = localStorage.getItem("userToken");
     let decodedToken = jwtDecode(encodedToken);
@@ -29,20 +29,15 @@ export default function App() {
     if (localStorage.getItem("userToken") !== null) {
       saveUserData();
     }
-    if (localStorage.getItem("applogin") !== null) {
-      setUserProfile(JSON.parse(localStorage.getItem("applogin")))
-    }
   }, []);
   function logOut() {
     localStorage.removeItem("userToken");
-    localStorage.removeItem("applogin");
     setUserData(null);
-    setUserProfile(null);
     return <Navigate to="/login" />;
   }
 
   function ProtectedRoute({ children }) {
-    if (userData||userProfile) {
+    if (userData) {
       return children
     }
     else {

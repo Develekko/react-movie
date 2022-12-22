@@ -7,12 +7,10 @@ import './Navbar.css'
 import $ from 'jquery';
 import { useEffect } from 'react';
 import Logo from '../../favicon.png';
-import { AuthContext } from '../../Context/AuthContext';
 
 
 
 export default function Navbar({ userData, logOut }) {
-  const { userProfile } = useContext(AuthContext);
   useEffect(() => {
     $('nav .navbar-toggler').on('click', function () {
       $('nav').toggleClass('bg-dark')
@@ -59,14 +57,14 @@ export default function Navbar({ userData, logOut }) {
             <li className="nav-item">
               <Link className="nav-link" to="/person">People</Link>
             </li>
-            {userData || userProfile ?
+            {userData ?
               <li className="nav-item">
                 <Link className="nav-link" to="/mylist">My List</Link>
               </li>
               : null}
           </ul>
           <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-          {userData||userProfile? <><li className="nav-item d-flex flex-row-reverse">
+            {userData ? <><li className="nav-item d-flex flex-row-reverse">
               <div className="searchBox">
 
                 <input id='searchInput' type="search" className='form-control rounded-pill' placeholder='Search...' onInput={(e) => { setCheckSearching(e.currentTarget.value) }} onChange={(e) => { getSearch(e.target.value) }} />
@@ -77,9 +75,7 @@ export default function Navbar({ userData, logOut }) {
             </li><li className="nav-item d-flex flex-row-reverse">
                 <a className="nav-link" target={'_blank'} href="https://github.com/Develekko" rel="noreferrer"><i className='fa-brands fa-github'></i></a>
               </li><li className="nav-item d-flex align-items-center">
-                Welcome <span className=' ms-2 username fw-bold'> {userData?.first_name||userProfile?.name}</span>
-              </li><li className="nav-item mx-2">
-              <img className='rounded-circle' width={30} src={userProfile?.picture?.data?.url||userProfile?.picture} alt='' />
+                Welcome <span className=' ms-2 username fw-bold'> {userData.first_name}</span>
               </li><li className="nav-item">
                 <span onClick={logOut} className="nav-link logout">Logout</span>
               </li></> : <><li className="nav-item">

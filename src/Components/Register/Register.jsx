@@ -1,14 +1,12 @@
 import Joi from 'joi'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import $ from 'jquery'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../../Context/AuthContext'
 
 export default function Register() {
 
     const navigate = useNavigate()
-    const { userData,userProfile } = useContext(AuthContext);
     const [user, setUser] = useState({
         first_name: '',
         last_name: '',
@@ -56,9 +54,6 @@ export default function Register() {
         }
     }
     useEffect(()=>{
-        if (userData !== null || userProfile !== null) {
-            navigate('/')
-        }
         $('#password').on('input',function()
         {
             if($('#password').val() === '')
