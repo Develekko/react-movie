@@ -1,0 +1,44 @@
+.bgImage
+{
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.5)),
+		url("https://assets.nflxext.com/ffe/siteui/vlv3/5e48e7b6-350d-48d9-96d6-de8ca173c89f/083b0034-e11a-432d-9a74-0b6b0eec0e39/EG-en-20221219-popsignuptwoweeks-perspective_alpha_website_large.jpg");
+	height: 100vh;
+
+}
+.form-body
+{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.showPass
+{
+	position: absolute;
+	right: 1%;
+	top: 20%;
+	cursor: pointer;
+	display: none;
+}
+.form-or
+{
+	text-align: center;
+	position: relative;
+}
+.form-or::before
+{
+	position: absolute;
+	content: '';
+	background-color: #fff;
+	width: 45%;
+	height: 1px;
+	top: 50%;
+	left: 0;
+}
+.form-or::after
+{
+	position: absolute;
+	content: '';
+	background-color: #fff;
+	width: 45%;
+	height: 1px;
+	top: 50%;
+	right: 0;
+}

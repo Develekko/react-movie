@@ -1,0 +1,41 @@
+.social-facebook ,.social-twitter,.social-instagram,.social-wiki
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.social-facebook
+{
+    background: rgb(20,160,249);
+    background: linear-gradient(180deg, rgba(20,160,249,1) 0%, rgba(4,110,229,1) 80%);
+}
+.social-facebook i ,.social-twitter i,.social-instagram i,.social-wiki i
+{
+    transform: translateY(2px);
+    -webkit-transform: translateY(2px);
+    -moz-transform: translateY(2px);
+    -ms-transform: translateY(2px);
+    -o-transform: translateY(2px);
+}
+.social-twitter
+{
+    background-color: #1D9BF0;
+}
+.social-instagram
+{
+    background: #f09433; 
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+    background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+}
+.social-wiki
+{
+    background:#F7F7F7;
+}
+.social-wiki i 
+{
+    color: #000;
+}

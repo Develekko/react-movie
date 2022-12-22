@@ -1,0 +1,12 @@
+.search
+{
+    z-index: 2;
+    background-color: rgba(19,23,34,0.9);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    overflow-y: scroll;
+    width: 100vw!important;
+    height: 100vh!important;
+}
