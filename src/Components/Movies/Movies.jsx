@@ -20,6 +20,7 @@ export default function Movies() {
         window.history.pushState({}, '', `#/movies?page=${e.selected + 1}`);
         let currentPage = e.selected + 1
         getPage(currentPage)
+        window.scrollTo(0, 0)
     }
     let location = useLocation();
     useEffect(() => {
@@ -30,6 +31,7 @@ export default function Movies() {
             setHandelCurrentPageNumber(Number(pageNumber)-1)
         }else
         {
+            setHandelCurrentPageNumber(0)
             getPage(1)
         }
     }, [location.pathname])
