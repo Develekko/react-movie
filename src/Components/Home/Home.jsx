@@ -135,11 +135,14 @@ export default function Home() {
         modules={[Keyboard, Autoplay]}
         className="mySwiper"
       >
-        {currentTrend.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${currentTrend[0].name ? 'tv' : 'movie'}`}>
-        <Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}>
-        <img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /></Tooltip>
-        <div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i></div>
-        
+        {currentTrend.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}>
+        <Link to={`/movie-details/${movie.id}/${currentTrend[0].name ? 'tv' : 'movie'}`}>
+          <Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}>
+          <div>
+          <img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} />
+          <div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i></div>
+         </div>
+          </Tooltip>
         </Link>
         </SwiperSlide>)}
       </Swiper></> : <Loading />}
@@ -178,10 +181,10 @@ export default function Home() {
       >
         {currentPopular.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}>
         <Link to={`/movie-details/${movie.id}/${currentPopular[0].name ? 'tv' : 'movie'}`}>
-        <Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><>
+        <Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><div>
         <img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} />
         <div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i></div>
-        </></Tooltip>
+        </div></Tooltip>
         </Link></SwiperSlide>)}
       </Swiper></> : <Loading />}
     </div>
@@ -217,7 +220,7 @@ export default function Home() {
         modules={[Keyboard]}
         className="mySwiper"
       >
-        {upComing.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${upComing[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></></Tooltip></Link></SwiperSlide>)}
+        {upComing.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${upComing[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><div><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></div></Tooltip></Link></SwiperSlide>)}
       </Swiper></> : <Loading />}
     </div>
 
@@ -252,7 +255,7 @@ export default function Home() {
         modules={[Keyboard]}
         className="mySwiper"
       >
-        {topRated.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${topRated[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></></Tooltip></Link></SwiperSlide>)}
+        {topRated.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${topRated[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><div><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></div></Tooltip></Link></SwiperSlide>)}
       </Swiper></> : <Loading />}
     </div>
 
@@ -287,7 +290,7 @@ export default function Home() {
         modules={[Keyboard]}
         className="mySwiper"
       >
-        {horror.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${horror[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></></Tooltip></Link></SwiperSlide>)}
+        {horror.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${horror[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><div><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></div></Tooltip></Link></SwiperSlide>)}
       </Swiper></> : <Loading />}
     </div>
 
@@ -322,7 +325,7 @@ export default function Home() {
         modules={[Keyboard]}
         className="mySwiper"
       >
-        {comedy.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${comedy[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></></Tooltip></Link></SwiperSlide>)}
+        {comedy.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${comedy[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><div><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></div></Tooltip></Link></SwiperSlide>)}
       </Swiper></> : <Loading />}
     </div>
 
@@ -357,7 +360,7 @@ export default function Home() {
         modules={[Keyboard]}
         className="mySwiper"
       >
-        {anime.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${anime[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></></Tooltip></Link></SwiperSlide>)}
+        {anime.filter(img => img.poster_path !== null).map((movie, index) => <SwiperSlide className='position-relative cardOverParent' key={index}><Link to={`/movie-details/${movie.id}/${anime[0].name ? 'tv' : 'movie'}`}><Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}><div><img className='img-fluid' src={imgPath + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} /><div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div></div></Tooltip></Link></SwiperSlide>)}
       </Swiper></> : <Loading />}
     </div>
   </>
