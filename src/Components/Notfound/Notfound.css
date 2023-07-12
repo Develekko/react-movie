@@ -1,0 +1,102 @@
+
+.notfound {
+    height: 100vh;
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100px);
+    -webkit-transform: translateY(-100px);
+    -moz-transform: translateY(-100px);
+    -ms-transform: translateY(-100px);
+    -o-transform: translateY(-100px);
+    flex-direction: column;
+    text-align: center;
+    user-select: none;
+  }
+  .notfound button
+  {
+      border: 2px solid #888;
+      color: #fff;
+      transition: all 0.5s ease-in-out;
+      -webkit-transition: all 0.5s ease-in-out;
+      -moz-transition: all 0.5s ease-in-out;
+      -ms-transition: all 0.5s ease-in-out;
+      -o-transition: all 0.5s ease-in-out;
+  }
+  .notfound button:hover
+  {
+  background-color: #fff;
+      color: #000;
+  }
+  .notfound .notfound-404 {
+    position: relative;
+    height: 240px;
+  }
+  
+  .notfound .notfound-404 h1 {
+    font-family: "Montserrat", sans-serif;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    font-size: 252px;
+    font-weight: 900;
+    margin: 0px;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: -40px;
+    margin-left: -20px;
+  }
+  
+  .notfound .notfound-404 h1 > span {
+    text-shadow: -8px 0px 0px rgb(128, 113, 113);
+  }
+  
+  .notfound .notfound-404 h3 {
+    font-family: "Cabin", sans-serif;
+    position: relative;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0px;
+    letter-spacing: 3px;
+    padding-left: 6px;
+  }
+  
+  .notfound h2 {
+    font-family: "Cabin", sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: rgb(255, 255, 255);
+    margin-top: 0px;
+    margin-bottom: 25px;
+  }
+  
+  @media only screen and (max-width: 767px) {
+    .notfound .notfound-404 {
+      height: 200px;
+    }
+    .notfound .notfound-404 h1 {
+      font-size: 200px;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .notfound .notfound-404 {
+      height: 162px;
+    }
+    .notfound .notfound-404 h1 {
+      font-size: 162px;
+      height: 150px;
+      line-height: 162px;
+    }
+    .notfound h2 {
+      font-size: 12px;
+    }
+  }

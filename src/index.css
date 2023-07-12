@@ -1,0 +1,80 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300&display=swap"); */
+:root{
+  --bg-color:#131722;
+  --main-color:#fff;
+  --border-color:#a8a8a83d;
+}
+.component-body
+{
+  padding: 6rem 0 3rem 0;
+}
+html {
+  overflow-x: hidden !important;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--bg-color)!important;
+  color: var(--main-color)!important;
+  font-family: "Montserrat Alternates", sans-serif;
+  padding-right: 0!important;
+}
+::selection
+{
+  background-color: transparent;
+}
+::-webkit-scrollbar-track
+{
+	background-color: var(--bg-color);
+}
+::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb
+{
+  background-color: var(--border-color);
+  border-radius:50px ;
+  -webkit-border-radius:50px ;
+  -moz-border-radius:50px ;
+  -ms-border-radius:50px ;
+  -o-border-radius:50px ;
+}
+ul,
+a {
+  list-style-type: none;
+  text-decoration: none;
+  color: var(--main-color)!important;
+}
+input
+{
+  background-color: transparent!important;
+  color: var(--main-color)!important;
+  border-color: var(--border-color);
+}
+input:focus
+{
+  box-shadow: none!important;
+  border-color: var(--main-color)!important;
+}
+
+
+
+#HomeBtns .slider-btn
+{
+  background-color: #212529;
+  color: white;
+}
+#HomeBtns button.active
+{
+  background-color: #DC3545!important;
+
+}
+#HomeBtns button
+{
+  border: none;
+}
+#HomeBtns button:focus
+{
+  border: none;
+}

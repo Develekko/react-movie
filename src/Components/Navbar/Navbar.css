@@ -1,0 +1,124 @@
+.username
+{
+    color: #34A853;
+}
+header.nav-fixed {
+    width: 100%;
+    position: fixed;
+    transition: 0.3s ease-in-out;
+}
+nav .navbar-toggler
+{
+    border: none!important;
+    outline: none!important;
+    box-shadow: none!important;
+}
+.nav-active {
+    background-color:#131722;
+}
+nav
+{
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+}
+.nav-link
+{
+    transition: all 0.5s ease-in-out!important;
+    -webkit-transition: all 0.5s ease-in-out!important;
+    -moz-transition: all 0.5s ease-in-out!important;
+    -ms-transition: all 0.5s ease-in-out!important;
+    -o-transition: all 0.5s ease-in-out!important;
+}
+.nav-link:hover
+{
+    color: #DC3545!important;
+}
+.logout
+{
+    cursor: pointer;
+}
+
+
+
+.searchBox {
+    background: transparent;
+    border-radius: 40px;
+}
+
+.searchBox:focus-within > #searchInput {
+    width: 240px;
+    padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+    color: red;
+}
+
+.searchButton {
+    color: white;
+    float: right;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    border-color: transparent;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    -o-transition: all 0.5s;
+}
+
+#searchInput {
+    border: none;
+    border-bottom: 1px solid #fff;
+    border-right: none;
+    background: transparent!important;
+    outline:none;
+    float:left;
+    padding: 0;
+    color: white;
+    font-size: 16px;
+    transition: 0.4s;
+    line-height: 40px;
+    width: 0px;
+    border-radius: 0!important;
+    -webkit-border-radius: 0!important;
+    -moz-border-radius: 0!important;
+    -ms-border-radius: 0!important;
+    -o-border-radius: 0!important;
+}
+
+#searchInput::placeholder
+{
+    color: #f5f5f5b2;
+}
+
+.navbar-toggler-icon
+{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255,255,255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;
+}
+.nav-cat-filter
+{
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    -o-transition: all 0.3s;
+}
+.nav-cat-filter:hover{
+    box-shadow: 0px 10px 18px rgba(0, 0, 0, 0.8);
+    background-color: #2c3136;
+    transform: scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    -ms-transform: scale(1.03);
+    -o-transform: scale(1.03);
+}
