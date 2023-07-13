@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-movie/static/css/main.04965863.css",
-    "main.js": "/react-movie/static/js/main.e1b009e8.js",
+    "main.js": "/react-movie/static/js/main.5d8667f7.js",
     "static/media/fa-solid-900.ttf": "/react-movie/static/media/fa-solid-900.b48ad290d0335879a92b.ttf",
     "static/media/fa-brands-400.ttf": "/react-movie/static/media/fa-brands-400.f9ee61fab3c11e2f3ed3.ttf",
     "static/media/fa-solid-900.woff2": "/react-movie/static/media/fa-solid-900.66104b766c3d0462b3c5.woff2",
@@ -12,10 +12,10 @@
     "static/media/fa-v4compatibility.woff2": "/react-movie/static/media/fa-v4compatibility.745989aab0d69cab7e70.woff2",
     "index.html": "/react-movie/index.html",
     "main.04965863.css.map": "/react-movie/static/css/main.04965863.css.map",
-    "main.e1b009e8.js.map": "/react-movie/static/js/main.e1b009e8.js.map"
+    "main.5d8667f7.js.map": "/react-movie/static/js/main.5d8667f7.js.map"
   },
   "entrypoints": [
     "static/css/main.04965863.css",
-    "static/js/main.e1b009e8.js"
+    "static/js/main.5d8667f7.js"
   ]
 }

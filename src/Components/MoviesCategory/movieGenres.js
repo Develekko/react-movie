@@ -1,6 +1,6 @@
 export const MovieGenres = [
     {id:28,name:"Action",display:"Action"}
-    ,{id:12,name:"Adventure",display:"Action"}
+    ,{id:12,name:"Adventure",display:"Adventure"}
     ,{id:16,name:"Animation",display:"Animation"}
     ,{id:35,name:"Comedy",display:"Comedy"}
     ,{id:80,name:"Crime",display:"Crime"}
