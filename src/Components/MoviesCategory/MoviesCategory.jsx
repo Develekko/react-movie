@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ListContext } from '../../Context/ListContext';
-import Loading from '../Loading/Loading';
 import { Helmet } from "react-helmet";
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
@@ -11,6 +10,7 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import axios from 'axios';
 import { MovieGenres, TvGenres } from './movieGenres.js';
+import { Skeleton } from '@mui/material';
 
 export default function MoviesCategory() {
     let { itemList, setItemList } = useContext(ListContext)
@@ -83,13 +83,16 @@ export default function MoviesCategory() {
                         <Link to={`/movie-details/${movie.id}/${media_type}`}>
                         <Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}>
                             <div className='position-relative cardOverParent'>
-                                <img className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + movie.poster_path} alt="" />
-                                <div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div>
+                                <img loading="lazy" className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + movie.poster_path} alt="" />
+                                <div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : 'null')}></i> </div>
                             </div>
                         </Tooltip>
                         </Link>
                     </div>
-                ) : <Loading />}
+                ) : [...Array(20)].map((_, index) =>
+                    <div key={index} className='col-md-3 mb-3'>
+                    <Skeleton animation="wave" variant="rectangular" width="100%" sx={{height:"459px",width:"306px",backgroundColor:"rgba(255,255,255,0.11)"}} />
+                    </div>) }
             </div>
             <ReactPaginate
                 previousLabel={<><Tooltip title="Prev" placement="left" TransitionComponent={Zoom} arrow componentsProps={{tooltip: {sx:{bgcolor: 'common.black','& .MuiTooltip-arrow': {

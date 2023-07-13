@@ -3,13 +3,13 @@ import React, { useContext, useEffect, useState } from 'react'
 import ReactPaginate from 'react-paginate';
 import { Link, useLocation } from 'react-router-dom';
 import { ApiData } from '../../Context/ApiStore';
-import Loading from '../Loading/Loading';
 import css from '../Movies/Movies.module.css'
 import { Helmet } from "react-helmet";
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { Skeleton } from '@mui/material';
 
 export default function People() {
     let { getPage, trendingPeople,currentPage } = useContext(ApiData)
@@ -43,19 +43,27 @@ export default function People() {
                     <div className={css.trending}>
                         <h4 className='my-3'>Trending People to watch now</h4>
                     </div>
-                </div> : null}
+                </div> : <div className="col-md-4 d-flex align-items-start flex-column justify-content-center ">
+                <Skeleton animation="wave" variant="text" height={10} width="20%" sx={{backgroundColor:"rgba(255,255,255,0.11)"}} />
+                <Skeleton animation="wave" variant="text" width="80%" sx={{backgroundColor:"rgba(255,255,255,0.11)",margin:"10px 0px"}} />
+                <Skeleton animation="wave" variant="text" height={10} width="80%" sx={{backgroundColor:"rgba(255,255,255,0.11)"}} />
+                </div>}
                 {trendingPeople.length > 0 ? trendingPeople.filter((img) => img.profile_path !== null).map((person, index) =>
                     <div key={index} className='col-md-2 mb-3'>
                         <Link to={`/person/${person.id}`}>
                             <div>
                             <Tooltip title={person.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}>
-                                <img className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + person.profile_path} alt="" />
+                                <img loading="lazy" className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + person.profile_path} alt="" />
                             </Tooltip>
                             </div>
                         </Link>
 
                     </div>
-                ) : <Loading />}
+                ) : 
+                    [...Array(20)].map((_, index) =>
+                    <div key={index} className='col-md-2 mb-3'>
+                    <Skeleton animation="wave" variant="rectangular" width="100%" sx={{height:"294px",width:"196px",backgroundColor:"rgba(255,255,255,0.11)"}} />
+                    </div>) }
             </div>
             <ReactPaginate
                 previousLabel={<><Tooltip title="Prev" placement="left" TransitionComponent={Zoom} arrow componentsProps={{tooltip: {sx:{bgcolor: 'common.black','& .MuiTooltip-arrow': {

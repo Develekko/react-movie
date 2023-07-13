@@ -4,13 +4,13 @@ import ReactPaginate from 'react-paginate';
 import { Link, useLocation } from 'react-router-dom';
 import { ApiData } from '../../Context/ApiStore';
 import { ListContext } from '../../Context/ListContext';
-import Loading from '../Loading/Loading';
 import css from './Movies.module.css'
 import { Helmet } from "react-helmet";
 import Tooltip from '@mui/material/Tooltip';
 import Zoom from '@mui/material/Zoom';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import { Skeleton } from '@mui/material';
 
 export default function Movies() {
     let { itemList, setItemList } = useContext(ListContext)
@@ -59,19 +59,28 @@ export default function Movies() {
                     <div className={css.trending}>
                         <h4 className='my-3'>Trending Movies to watch now</h4>
                     </div>
-                </div> : null}
+                </div> : <div className="col-md-4 d-flex align-items-start flex-column justify-content-center ">
+                <Skeleton animation="wave" variant="text" height={10} width="20%" sx={{backgroundColor:"rgba(255,255,255,0.11)"}} />
+                <Skeleton animation="wave" variant="text" width="80%" sx={{backgroundColor:"rgba(255,255,255,0.11)",margin:"10px 0px"}} />
+                <Skeleton animation="wave" variant="text" height={10} width="80%" sx={{backgroundColor:"rgba(255,255,255,0.11)"}} />
+                </div> 
+               }
                 {trendingMovies.length > 0 ? trendingMovies.filter((movie) => movie.poster_path !== null).map((movie, index) =>
                     <div key={index} className='col-md-2 mb-3'>
                         <Link to={`/movie-details/${movie.id}/${movie.media_type}`}>
                         <Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}>
                             <div className='position-relative cardOverParent'>
-                                <img className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + movie.poster_path} alt="" />
+                                <img loading="lazy" className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + movie.poster_path} alt="" />
                                 <div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i> </div>
                             </div>
                         </Tooltip>
                         </Link>
-                    </div>
-                ) : <Loading />}
+                    </div>) :
+                    [...Array(20)].map((_, index) =>
+                    <div key={index} className='col-md-2 mb-3'>
+                    <Skeleton animation="wave" variant="rectangular" width="100%" sx={{height:"294px",width:"196px",backgroundColor:"rgba(255,255,255,0.11)"}} />
+                    </div>) 
+                }
             </div>
             <ReactPaginate
                 previousLabel={<><Tooltip title="Prev" placement="left" TransitionComponent={Zoom} arrow componentsProps={{tooltip: {sx:{bgcolor: 'common.black','& .MuiTooltip-arrow': {

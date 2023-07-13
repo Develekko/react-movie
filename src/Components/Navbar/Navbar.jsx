@@ -71,7 +71,7 @@ export default function Navbar({ userData, logOut }) {
 
         <li className="nav-item"  onMouseEnter={()=>{setTVMenu(null)}}>            
             <Link onMouseEnter={handleOpenMovieMenu}  className="nav-link form-font cursor-pointer" aria-current="page"
-              to="/movies">Movies</Link>
+              to="/movies">Movies <i class="fa-solid fa-caret-down"></i></Link>
             <Menu  id="menu-appbar" anchorEl={MovieMenu} sx={{ width: '400px',top:'50px',height:'100%',left:{xs:'0px',md:'100px'},zIndex:3,'& .MuiPopover-paper': {
             left: '16px!important',top:'0!important',background:'transparent'}, '& .MuiList-root': {padding: '0px'}}} onClose={handleCloseMovieMenu} open={Boolean(MovieMenu)}>
               <Box onMouseLeave={handleCloseMovieMenu}  className="row bg-dark p-3 rounded-3">
@@ -87,7 +87,7 @@ export default function Navbar({ userData, logOut }) {
 
             <li className="nav-item" onMouseEnter={()=>{setMovieMenu(null)}} >          
             <Link onMouseEnter={handleOpenTVMenu}  className="nav-link form-font cursor-pointer" aria-current="page"
-              to="/tv-shows">TvShows</Link>
+              to="/tv-shows">TvShows <i class="fa-solid fa-caret-down"></i></Link>
             <Menu  id="menu-appbar" anchorEl={TVMenu} sx={{ width: '420px',top:'50px',left:{xs:'0',md:'100px'},zIndex:3,'& .MuiPopover-paper': {
             left: '16px!important',top:'0!important',background:'transparent'}, '& .MuiList-root': {
             padding: '0px'}}} onClose={handleCloseTVMenu} open={Boolean(TVMenu)}>

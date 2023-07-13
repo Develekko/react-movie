@@ -42,7 +42,7 @@ export default function Search() {
                     <Link to={`/movie-details/${movie.id}/${movie.media_type}`}>
                     <Tooltip title={movie?.title || movie?.name} placement="top" followCursor TransitionComponent={Zoom} componentsProps={{tooltip: {sx: {bgcolor: 'common.black'}}}}>
                     <div className="cardOverParent position-relative">
-                    <img className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} />
+                    <img loading="lazy" className='img-fluid' src={`https://image.tmdb.org/t/p/w500` + movie.poster_path} title={movie?.name || movie?.title} alt={movie?.name || movie?.title} />
                     <div className='cardOverlay'><i onClick={(e) => { setFav(movie); e.preventDefault();e.stopPropagation() }} className={'fa-solid fa-heart fs-5 me-2 ' + (itemList?.filter(x => x.id === movie.id).length > 0 ? 'text-danger animate__animated animate__fadeIn' : null)}></i></div>
                     </div>
                     </Tooltip>
