@@ -100,7 +100,7 @@ export function ApiDataProvider(props) {
   function getPage(page) {
     setcurrentPage(page);
   }
-
+ 
   useEffect(() => {
     getTrendingAll();
     getTrendingMovies();

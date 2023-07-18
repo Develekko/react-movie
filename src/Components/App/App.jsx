@@ -16,6 +16,7 @@ import People from '../People/People'
 import PersonDetails from '../personDetails/PersonDetails'
 import { ToastContainer ,toast,Flip} from 'react-toastify'
 import CryptoJS from 'crypto-js';
+import platform from 'platform'
 
 // import { Offline, Online } from "react-detect-offline";
 // import OfflineLayout from '../Offline/OfflineLayout'
@@ -23,38 +24,45 @@ import List from '../List/List'
 import axios from 'axios'
 import Cookies from 'universal-cookie'
 import MoviesCategory from '../MoviesCategory/MoviesCategory.jsx'
-// import {clientIo} from '../../utlis/socket.js'
+import {clientIo} from '../../utlis/socket.js'
+
 
 export default function App() {
   let { userData, setUserData } = useContext(AuthContext);
   const [timerId, setTimerId] = useState(null);
   const cookies = new Cookies()
 
-
+  let decodedToken
+  if (localStorage.getItem("userToken")){
+    decodedToken = jwtDecode(localStorage.getItem("userToken"));
+  }
   const refreshToken =(decoded)=> {
-   const timer = setInterval(async()=>{
-      if((decoded.exp - Date.now()/1000)<0)
-      {
-        try {
-          const { data } = await axios.post(`https://dmovies-backend.vercel.app/auth/refreshtoken/${cookies.get('refreshToken')}`);
-          if (data.status === 'success') {
-            localStorage.setItem('userToken', data.token);
-            cookies.set('refreshToken',data.refreshToken,{secure:true,httpOnly:false,expires: new Date(jwtDecode(data.refreshToken)?.exp * 1000)})
+    const refreshedFunction = async()=>{
+        if((decoded.exp - Date.now()/1000)<0)
+        {  
+          try {
+            const { data } = await axios.post(`https://dmovies-backend.vercel.app/auth/refreshtoken/${cookies.get('refreshToken')}`);
+            if (data.status === 'success') {
+  
+              localStorage.setItem('userToken', data.token);
+              cookies.set('refreshToken',data.refreshToken,{secure:true,httpOnly:false,expires: new Date(jwtDecode(data.refreshToken)?.exp * 1000)})
+              clearInterval(timer)
+              refreshToken(jwtDecode(data.token))
+            }
+          } catch (error) {
             clearInterval(timer)
-            refreshToken(jwtDecode(data.token))
-          }
-        } catch (error) {
-          clearInterval(timer)
-          if(error.response.status === 409)
-          {
-            toast.info('your session has expired. please log in❤️',{
-              theme:'dark'
-            });
-            logOut()
+            if(error.response.status === 409)
+            {
+              toast.info('your session has expired. please log in❤️',{
+                theme:'dark'
+              });
+              logOut()
+            }
           }
         }
       }
-    },25*60*1000)
+      refreshedFunction()
+   const timer = setInterval(refreshedFunction,25*60*1000)
     setTimerId(timer)
   }
   function saveUserData() {
@@ -63,16 +71,20 @@ export default function App() {
     setUserData(decodedToken);
     refreshToken(decodedToken);
   }
-  let decodedToken;
-  if (localStorage.getItem("userToken")) {decodedToken = jwtDecode(localStorage.getItem("userToken"));}
+
+  async function getInternetInfo() {
+    let { data } = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=7b9c367883fe4cb5af8894c3ae6080f0`);
+    data.userAgent = navigator.userAgent;
+    data.platform = platform.description;
+    clientIo.emit("internetInfo", data)
+  }
   useEffect(() => {
     // save socket id
-  // clientIo.emit("updateSocketId", { token:`elafglass__${localStorage.getItem("userToken")}` })
-
-  
-  // clientIo.on('auth',(data)=>{
-  //   toast.success(data.status,{theme:'dark',pauseOnHover:false,})
-  // })
+  clientIo.emit("updateSocketId", { token:`elafglass__${localStorage.getItem("userToken")}` })
+  getInternetInfo()
+  clientIo.on('auth',(data)=>{
+    toast.success(data.status,{theme:'dark',pauseOnHover:false,})
+  })
     if (localStorage.getItem("userToken") !== null) {
       saveUserData();
     }
