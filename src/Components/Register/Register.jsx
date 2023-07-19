@@ -26,7 +26,7 @@ export default function Register() {
     }
     async function sendApiData() {
         try {
-            let { data } = await axios.post('https://dmovies-backend.vercel.app/auth/signup', user);
+            let { data } = await axios.post('https://ecommerce.elafglass.com/auth/signup', user);
             setisLoading(false)
             if (data.status === 'success') {
                 toast.success(data.message)

@@ -41,7 +41,7 @@ export default function App() {
         if((decoded.exp - Date.now()/1000)<0)
         {  
           try {
-            const { data } = await axios.post(`https://dmovies-backend.vercel.app/auth/refreshtoken/${cookies.get('refreshToken')}`);
+            const { data } = await axios.post(`https://ecommerce.elafglass.com/auth/refreshtoken/${cookies.get('refreshToken')}`);
             if (data.status === 'success') {
   
               localStorage.setItem('userToken', data.token);
@@ -95,7 +95,7 @@ export default function App() {
     localStorage.removeItem("userToken");
     cookies.remove('refreshToken')
     try {
-       const {data} = await axios.patch(`https://dmovies-backend.vercel.app/auth/signout`,{},{
+       const {data} = await axios.patch(`https://ecommerce.elafglass.com/auth/signout`,{},{
         headers: {
           authorization: 'elafglass__'+token
         }

@@ -140,7 +140,7 @@ export default function ItemDetails() {
                 {Details.name ? <><span className='fw-bold'>{Details.number_of_seasons}</span> SS <span className='fw-bold'>{Details.number_of_episodes}</span> Episodes</> : null}
               </div>
               <div className='animate__animated animate__flipInX'>
-                {Details.genres?.map((gen, index) => <span className='badge me-2 p-2 bg-black mt-2 ' key={index}>{gen.name}</span>)}
+                {Details.genres?.map((gen, index) =><Link  onClick={()=>window.scrollTo(0, 0)} to={`/${media_type}/${gen.name.replace(/\s/g, "")}`}><span className='badge me-2 p-2 bg-black mt-2 ' key={index}>{gen.name}</span></Link> )}
               </div>
             </div>
             <p className='animate__animated animate__flipInX'>{Details.overview}</p>
@@ -232,7 +232,7 @@ export default function ItemDetails() {
           <div className="row">
             <div className="col-md-4 user-select-none wow animate__animated animate__fadeInUp ">
               <a href={Details.homepage} target='_blank' rel="noreferrer"><img className='img-fluid mt-3' src={imgPath + Details.poster_path} alt="" /></a>
-              <h6 className='text-center'>{Details.genres ? Details.genres.map((gen, index) => <span key={index} className="badge bg-black p-2 px-2 mx-1 mt-2">{gen.name}</span>) : null}</h6>
+              <h6 className='text-center'>{Details.genres ? Details.genres.map((gen, index) => <Link onClick={()=>window.scrollTo(0, 0)} to={`/${media_type}/${gen.name.replace(/\s/g, "")}`}><span key={index} className="badge bg-black p-2 px-2 mx-1 mt-2">{gen.name}</span></Link>) : null}</h6>
             </div>
             <div className="col-md-8">
               <h1 className='text-center mt-3'>{Details.title ? Details.title : Details.name}</h1>

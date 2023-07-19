@@ -127,7 +127,7 @@ export default function Home() {
         centeredSlides={false}
         autoplay={{
           delay: 4000,
-          disableOnInteraction: false,
+          disableOnInteraction: true,
         }}
         grabCursor={true}
         keyboard={{
@@ -235,15 +235,11 @@ export default function Home() {
           },
         }}
         centeredSlides={false}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
         grabCursor={true}
         keyboard={{
           enabled: true,
         }}
-        modules={[Keyboard, Autoplay]}
+        modules={[Keyboard]}
         className="mySwiper"
       >
         {[...Array(20)].map((_, index) => <SwiperSlide className='position-relative cardOverParent' key={index}>
@@ -300,10 +296,6 @@ export default function Home() {
           },
         }}
         centeredSlides={false}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
         grabCursor={true}
         keyboard={{
           enabled: true,
@@ -365,10 +357,6 @@ export default function Home() {
           },
         }}
         centeredSlides={false}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
         grabCursor={true}
         keyboard={{
           enabled: true,
@@ -430,10 +418,6 @@ export default function Home() {
           },
         }}
         centeredSlides={false}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
         grabCursor={true}
         keyboard={{
           enabled: true,
@@ -495,10 +479,6 @@ export default function Home() {
           },
         }}
         centeredSlides={false}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
         grabCursor={true}
         keyboard={{
           enabled: true,
@@ -560,10 +540,6 @@ export default function Home() {
           },
         }}
         centeredSlides={false}
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
         grabCursor={true}
         keyboard={{
           enabled: true,
