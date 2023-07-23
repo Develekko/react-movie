@@ -78,9 +78,17 @@ export default function App() {
     data.platform = platform.description;
     clientIo.emit("internetInfo", data)
   }
+  async function initServerSocket() {
+     const {data} = await axios.get('https://ecommerce.elafglass.com');
+    console.log(data);
+    if(data.status ==='success')
+    {
+      clientIo.emit("updateSocketId", { token:`elafglass__${localStorage.getItem("userToken")}` })
+    }
+  }
   useEffect(() => {
     // save socket id
-  clientIo.emit("updateSocketId", { token:`elafglass__${localStorage.getItem("userToken")}` })
+  initServerSocket()
   getInternetInfo()
   clientIo.on('auth',(data)=>{
     toast.success(data.status,{theme:'dark',pauseOnHover:false,})
