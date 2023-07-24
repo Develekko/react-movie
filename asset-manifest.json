@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-movie/static/css/main.2c76a1f0.css",
-    "main.js": "/react-movie/static/js/main.d5d60e9a.js",
+    "main.css": "/react-movie/static/css/main.fe711206.css",
+    "main.js": "/react-movie/static/js/main.7c0099c3.js",
     "static/media/fa-solid-900.ttf": "/react-movie/static/media/fa-solid-900.b48ad290d0335879a92b.ttf",
     "static/media/fa-brands-400.ttf": "/react-movie/static/media/fa-brands-400.f9ee61fab3c11e2f3ed3.ttf",
     "static/media/fa-solid-900.woff2": "/react-movie/static/media/fa-solid-900.66104b766c3d0462b3c5.woff2",
@@ -11,11 +11,11 @@
     "static/media/fa-v4compatibility.ttf": "/react-movie/static/media/fa-v4compatibility.f601162ae669f88823a3.ttf",
     "static/media/fa-v4compatibility.woff2": "/react-movie/static/media/fa-v4compatibility.745989aab0d69cab7e70.woff2",
     "index.html": "/react-movie/index.html",
-    "main.2c76a1f0.css.map": "/react-movie/static/css/main.2c76a1f0.css.map",
-    "main.d5d60e9a.js.map": "/react-movie/static/js/main.d5d60e9a.js.map"
+    "main.fe711206.css.map": "/react-movie/static/css/main.fe711206.css.map",
+    "main.7c0099c3.js.map": "/react-movie/static/js/main.7c0099c3.js.map"
   },
   "entrypoints": [
-    "static/css/main.2c76a1f0.css",
-    "static/js/main.d5d60e9a.js"
+    "static/css/main.fe711206.css",
+    "static/js/main.7c0099c3.js"
   ]
 }
