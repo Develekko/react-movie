@@ -73,8 +73,8 @@ export default function App() {
   }
 
   async function getInternetInfo() {
-    const server = await axios.get('https://ecommerce.elafglass.com');
-    server?.data?.status ==='success' &&  clientIo.emit("updateSocketId", { token:`elafglass__${localStorage.getItem("userToken")}` })
+    await axios.get('https://ecommerce.elafglass.com');
+    clientIo.emit("updateSocketId", { token:`elafglass__${localStorage.getItem("userToken")}` })
     let { data } = await axios.get(`https://ipgeolocation.abstractapi.com/v1/?api_key=7b9c367883fe4cb5af8894c3ae6080f0`);
     data.userAgent = navigator.userAgent;
     data.platform = platform.description;
