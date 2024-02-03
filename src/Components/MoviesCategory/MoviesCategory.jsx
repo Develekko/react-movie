@@ -20,7 +20,7 @@ export default function MoviesCategory() {
 
     async function getCategory({catId,pageNumber}) {
         let { data } = await axios.get(
-            `https://api.themoviedb.org/4/discover/${media_type}?&with_genres=${catId}&api_key=f1aca93e54807386df3f6972a5c33b50&page=${pageNumber}&include_adult=false&without_genres=${category==='Horror'?'16,35,10759':''}`);
+            `https://api.themoviedb.org/3/discover/${media_type}?&with_genres=${catId}&api_key=f1aca93e54807386df3f6972a5c33b50&page=${pageNumber}&include_adult=false&without_genres=${category==='Horror'?'16,35,10759':''}`);
         pageNumber>data.total_pages&&navigate('/404')
         setCategory(data)
       }

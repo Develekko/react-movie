@@ -22,7 +22,7 @@ export function ApiDataProvider(props) {
   const [CheckingSearch, setCheckSearching] = useState("");
   async function getTrendingAll() {
     let { data } = await axios.get(
-      `https://api.themoviedb.org/4/discover/movie?vote_average.gte=7.8&with_original_language=en&without_genres=16&api_key=${apiKey}`
+      `https://api.themoviedb.org/3/discover/movie?vote_average.gte=7.8&with_original_language=en&without_genres=16&api_key=${apiKey}`
     );
     setTrendingAll(data.results);
   }
@@ -70,7 +70,7 @@ export function ApiDataProvider(props) {
   }
   async function getComedy(currentPop) {
     let { data } = await axios.get(
-      `https://api.themoviedb.org/4/discover/${
+      `https://api.themoviedb.org/3/discover/${
         currentPop ? currentPop : "movie"
       }?vote_average.gte=7.5&with_original_language=en&with_genres=35&without_genres=16&api_key=${apiKey}`
     );
@@ -78,7 +78,7 @@ export function ApiDataProvider(props) {
   }
   async function getAnime(currentPop) {
     let { data } = await axios.get(
-      `https://api.themoviedb.org/4/discover/${
+      `https://api.themoviedb.org/3/discover/${
         currentPop ? currentPop : "movie"
       }?&with_genres=16&with_keywords=210024|287501&api_key=${apiKey}`
     );
@@ -86,13 +86,13 @@ export function ApiDataProvider(props) {
   }
   async function getHorror(currentPop) {
     let { data } = await axios.get(
-      `https://api.themoviedb.org/4/discover/${currentPop ? currentPop : "movie"}?&without_genres=16,35,10759&with_genres=${currentPop==='tv'?'80,18,10765':27}&api_key=${apiKey}`
+      `https://api.themoviedb.org/3/discover/${currentPop ? currentPop : "movie"}?&without_genres=16,35,10759&with_genres=${currentPop==='tv'?'80,18,10765':27}&api_key=${apiKey}`
     );
     setHorror(data.results);
   }
   async function getUpComing(currentPop) {
     let { data } = await axios.get(
-      `https://api.themoviedb.org/4/discover/${currentPop ? currentPop : "movie"}?api_key=${apiKey}&sort_by=primary_release_date.desc,popularity.desc&include_adult=false&region=US&${currentPop==='tv'?'first_air_date':'primary_release_date'}.gte=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)}&${currentPop==='tv'?'first_air_date':'primary_release_date'}.lte=${new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)}`
+      `https://api.themoviedb.org/3/discover/${currentPop ? currentPop : "movie"}?api_key=${apiKey}&sort_by=primary_release_date.desc,popularity.desc&include_adult=false&region=US&${currentPop==='tv'?'first_air_date':'primary_release_date'}.gte=${new Date(Date.now() + 1 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)}&${currentPop==='tv'?'first_air_date':'primary_release_date'}.lte=${new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)}`
     );
     setUpComing(data.results);
   }
