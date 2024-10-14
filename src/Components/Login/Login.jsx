@@ -28,11 +28,12 @@ export default function Login({saveUserData}) {
     }
     async function sendApiData() {
         try {
-            let {data} = await axios.post('https://ecommerce.elafglass.com/auth/signin', user);
+            let {data=undefined} = await axios.post('https://ecommerce.elafglass.com/auth/signin', user);
             setisLoading(false)
-            if (data.status === 'success') {
-                new Cookies().set('refreshToken',data.refreshToken,{secure:true,httpOnly:false,expires: new Date(jwtDecode(data.refreshToken)?.exp * 1000)})
-                localStorage.setItem('userToken',data.token)
+console.log(data)
+            if (data?.status === 'success') {
+                new Cookies().set('refreshToken',data?.refreshToken,{secure:true,httpOnly:false,expires: new Date(jwtDecode(data?.refreshToken)?.exp * 1000)})
+                localStorage.setItem('userToken',data?.token)
                 saveUserData()
                 toast.success(data.message,{
                     theme:"dark"
