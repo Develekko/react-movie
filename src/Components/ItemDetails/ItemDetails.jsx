@@ -97,7 +97,7 @@ export default function ItemDetails() {
     getTrailer()
     getSimilar()
     loadDisqus(id);
-  }, [TvSeason, playTrailer, id])
+  }, [TvSeason, playTrailer, id,TvId])
   function setFav(movie) {
     if (itemList.some(x => x.id === movie.id)) {
       itemList.splice(itemList.findIndex(x => x.id === movie.id), 1)
@@ -185,8 +185,8 @@ export default function ItemDetails() {
             }} className='text-truncate p-2' key={index}>S{TvSeason}: E{season.episode_number} <span className='text-white-50'>{season.name}</span></p>)}
           </div> : null}
           <div className={Details.seasons ? 'col-md-10 ps-0 user-select-none' : 'bg-black'}>
-            {/* <iframe allow="fullscreen" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" src={Details.title ? `https://www.2embed.to/embed/imdb/movie?id=${Details.imdb_id}` : `https://www.2embed.to/embed/imdb/tv?id=${TvId}&s=${TvSeason}&e=${TvEpisode}`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} /> */}
-            <iframe frameBorder="0" allowFullScreen="allowfullscreen" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" src={Details.title ? `https://vidsrc.me/embed/${Details.imdb_id}/color-F10000` : `https://vidsrc.me/embed/${TvId}/${TvSeason}-${TvEpisode}/color-F10000`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} />
+            <iframe allow="fullscreen" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" src={Details.title ? `https://vidlink.pro/movie/${Details.id}` : `https://vidlink.pro/tv/${Details.id}/${TvSeason}/${TvEpisode}`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} /> 
+            {/* <iframe frameBorder="0" allowFullScreen="allowfullscreen" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" src={Details.title ? `https://vidsrc.me/embed/${Details.imdb_id}/color-F10000` : `https://vidsrc.me/embed/${TvId}/${TvSeason}-${TvEpisode}/color-F10000`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} /> */}
           </div>
         </div>
         <div className='container text-center'>
