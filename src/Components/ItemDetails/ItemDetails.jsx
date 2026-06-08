@@ -171,10 +171,9 @@ export default function ItemDetails() {
         </div>
         <div id='show' className="row px-0">
           <div className={'bg-black'}>
-            <iframe allow="fullscreen" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" 
+            <iframe allow="fullscreen" sandbox="allow-scripts allow-same-origin"
+  referrerpolicy="no-referrer" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" 
             src={`https://streamimdb.ru/embed/${Details.title?'movie':'tv'}/${Details.id}`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} /> 
-            {/* <iframe allow="fullscreen" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" 
-            src={Details.title ? `https://vidlink.pro/movie/${Details.id}?primaryColor=ffffff&secondaryColor=a2a2a2&iconColor=eefdec&icons=vid&player=jw&title=true&poster=true&autoplay=false&nextbutton=true` : `https://vidlink.pro/tv/${Details.id}/${TvSeason}/${TvEpisode}?primaryColor=ffffff&secondaryColor=a2a2a2&iconColor=eefdec&icons=vid&player=jw&title=true&poster=true&autoplay=false&nextbutton=true`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} />  */}
           </div>
         </div>
         <div className='container text-center'>
