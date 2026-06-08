@@ -27,7 +27,6 @@ export default function ItemDetails() {
   const [Details, setDetails] = useState([]);
   const [similar, setsimilar] = useState([])
   const [credit, setcredit] = useState([])
-  const [SeasonDetails, setSeasonDetails] = useState([])
   const [TvId, setTvId] = useState('')
   const [TvSeason, setTvSeason] = useState(1)
   const [Trailer, setTrailer] = useState('')
@@ -49,10 +48,6 @@ export default function ItemDetails() {
   async function getExternalId() {
     let { data } = await axios.get(`https://api.themoviedb.org/3/tv/${id}/external_ids?api_key=f1aca93e54807386df3f6972a5c33b50&language=en-US`)
     setTvId(data.imdb_id)
-  }
-  async function getSeasonDetails() {
-    let { data } = await axios.get(`https://api.themoviedb.org/3/tv/${id}/season/${TvSeason}?api_key=f1aca93e54807386df3f6972a5c33b50&language=en-US`)
-    setSeasonDetails(data.episodes)
   }
   async function getTrailer() {
     let { data } = await axios.get(`https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=f1aca93e54807386df3f6972a5c33b50&language=en-US`)
@@ -92,7 +87,6 @@ export default function ItemDetails() {
     getItemDetails()
     getMovieCredits()
     getExternalId()
-    getSeasonDetails()
     getTrailer()
     getSimilar()
     loadDisqus(id);
@@ -176,13 +170,7 @@ export default function ItemDetails() {
           }} className="cursorDown"></span></div>
         </div>
         <div id='show' className="row px-0">
-          {Details.seasons ? <div className="col-md-2 bg-black season-display pe-0">
-            {SeasonDetails.map((season, index) => <p onClick={() => {
-              const El = document.getElementById('show').offsetTop;
-              window.scrollTo(0, El - 55);
-            }} className='text-truncate p-2' key={index}>S{TvSeason}: E{season.episode_number} <span className='text-white-50'>{season.name}</span></p>)}
-          </div> : null}
-          <div className={Details.seasons ? 'col-md-10 ps-0 user-select-none' : 'bg-black'}>
+          <div className={'bg-black'}>
             <iframe allow="fullscreen" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" 
             src={`https://streamimdb.ru/embed/${Details.title?'movie':'tv'}/${Details.id}`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} /> 
             {/* <iframe allow="fullscreen" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" 
@@ -221,7 +209,6 @@ export default function ItemDetails() {
           >
             {Details.seasons.filter(season => season.name !== "Specials").map((season, index) => <SwiperSlide className='seasonShow' onClick={() => {
               setTvSeason(season.season_number)
-              getSeasonDetails()
               const El = document.getElementById('show').offsetTop;
               window.scrollTo(0, El - 55);
             }} key={index}><img className='img-fluid' src={imgPath + season.poster_path} title={season.name} alt="" />
