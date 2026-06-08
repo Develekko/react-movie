@@ -30,7 +30,6 @@ export default function ItemDetails() {
   const [SeasonDetails, setSeasonDetails] = useState([])
   const [TvId, setTvId] = useState('')
   const [TvSeason, setTvSeason] = useState(1)
-  const [TvEpisode, setTvEpisode] = useState(1)
   const [Trailer, setTrailer] = useState('')
   const [playTrailer, setplayTrailer] = useState(false)
   async function getItemDetails() {
@@ -179,7 +178,6 @@ export default function ItemDetails() {
         <div id='show' className="row px-0">
           {Details.seasons ? <div className="col-md-2 bg-black season-display pe-0">
             {SeasonDetails.map((season, index) => <p onClick={() => {
-              setTvEpisode(season.episode_number)
               const El = document.getElementById('show').offsetTop;
               window.scrollTo(0, El - 55);
             }} className='text-truncate p-2' key={index}>S{TvSeason}: E{season.episode_number} <span className='text-white-50'>{season.name}</span></p>)}
