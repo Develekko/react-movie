@@ -172,7 +172,7 @@ export default function ItemDetails() {
         <div id='show' className="row px-0">
           <div className={'bg-black'}>
             <iframe allow="fullscreen"
-  referrerpolicy="no-referrer" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" 
+  referrerPolicy="no-referrer" frameBorder="0" allowFullScreen={true} webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true" 
             src={`https://streamimdb.ru/embed/${Details.title?'movie':'tv'}/${Details.id}`} className="w-100 vh-100" title={Details.title ? Details.title : Details.name} /> 
           </div>
         </div>
